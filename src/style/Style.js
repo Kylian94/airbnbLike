@@ -9,7 +9,7 @@ export default StyleSheet.create({
     button: {
 
         width: 320,
-        height: 50,
+        height: 45,
         marginBottom: 10,
         borderRadius: 50,
     },

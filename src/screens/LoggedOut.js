@@ -69,8 +69,8 @@ export default class LoggedOut extends React.Component {
                                             <Icon name="times" size={25} style={{ color: "white" }}></Icon>
                                         </TouchableHighlight>
                                         <View style={{ marginTop: 200, }}>
-                                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
-                                            <Button icon={<Icon name="facebook" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Facebook" />
+                                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 80, top: -10 }}></Icon>} color="#00787E" look="primary" content="Google" />
+                                            <Button icon={<Icon name="facebook" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 75, top: -10 }}></Icon>} color="#00787E" look="primary" content="Facebook" />
                                             <Button color="white" look="secondary" content="Create account" />
                                         </View>
 
