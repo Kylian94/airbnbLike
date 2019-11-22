@@ -37,7 +37,7 @@ export default class LoggedOut extends React.Component {
                         <Text style={[styles.textWhite, styles.title,]}>Welcome to Airbnb.</Text>
                         <View style={{ alignItems: "center", marginTop: 50, }}>
 
-                            <Button icon={<Icon name="facebook" size={20} style={{ color: '#00787E', marginRight: 20 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
+                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right:20, top:-10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
                             <Button color="white" look="secondary" content="Create account" />
                         </View>
                         <Text style={{ marginTop: 35, color: "white", fontSize: 16, }}>More option</Text>
