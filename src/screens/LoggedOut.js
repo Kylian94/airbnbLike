@@ -19,6 +19,7 @@ import {
 
 import styles from '../style/Style';
 import Button from '../components/Button';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class LoggedOut extends React.Component {
@@ -26,7 +27,6 @@ export default class LoggedOut extends React.Component {
         return (
             <>
                 <StatusBar barStyle="light-content" backgroundColor="black" />
-
                 <View style={styles.backgroundApp}>
                     <View style={styles.container}>
                         <Text style={{ textAlign: "right", marginTop: 15, color: "white" }}>Log in</Text>
@@ -36,7 +36,8 @@ export default class LoggedOut extends React.Component {
                         />
                         <Text style={[styles.textWhite, styles.title,]}>Welcome to Airbnb.</Text>
                         <View style={{ alignItems: "center", marginTop: 50, }}>
-                            <Button color="#00787E" look="primary" content="Continue with Google" />
+
+                            <Button icon={<Icon name="facebook" size={20} style={{ color: '#00787E', marginRight: 20 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
                             <Button color="white" look="secondary" content="Create account" />
                         </View>
                         <Text style={{ marginTop: 35, color: "white", fontSize: 16, }}>More option</Text>

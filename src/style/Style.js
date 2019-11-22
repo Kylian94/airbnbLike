@@ -7,21 +7,23 @@ export default StyleSheet.create({
         backgroundColor: "#00787E",
     },
     button: {
-        alignItems: "center",
+
         width: 320,
         height: 50,
         marginBottom: 10,
-        justifyContent: "center",
         borderRadius: 50,
     },
     buttonPrimary: {
+
         backgroundColor: "white",
+        justifyContent: "space-between"
     },
     buttonSecondary: {
         backgroundColor: "#00787E",
         borderColor: "white",
         borderStyle: "solid",
         borderWidth: 1,
+
     },
     textButton: {
         fontWeight: "bold",
