@@ -6,7 +6,12 @@ import {
     View,
     Text,
     StatusBar,
-    Image
+    Image,
+    Modal,
+    Alert,
+    TouchableHighlight,
+    TouchableOpacity
+
 } from 'react-native';
 
 import {
@@ -23,6 +28,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export default class LoggedOut extends React.Component {
+    state = {
+        modalVisible: false,
+    };
+
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
     render() {
         return (
             <>
@@ -37,11 +49,43 @@ export default class LoggedOut extends React.Component {
                         <Text style={[styles.textWhite, styles.title,]}>Welcome to Airbnb.</Text>
                         <View style={{ alignItems: "center", marginTop: 50, }}>
 
-                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right:20, top:-10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
+                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
                             <Button color="white" look="secondary" content="Create account" />
                         </View>
-                        <Text style={{ marginTop: 35, color: "white", fontSize: 16, }}>More option</Text>
-                        <Text style={[styles.textWhite, { marginTop: 160, opacity: 0.7 }]}>Nous utilisons des cookies pour personnaliser notre contenu et nos publicités, mesurer l'efficacité de nos publicités et offrir une expérience plus sûre.</Text>
+                        <View style={[{ marginTop: 22 }]}>
+                            <Modal
+                                animationType="slide"
+                                transparent={false}
+                                visible={this.state.modalVisible}
+                                onRequestClose={() => {
+                                    Alert.alert('Modal has been closed.');
+                                }}>
+                                <View style={[styles.backgroundApp, { alignItems: "center" }]}>
+                                    <View style={[{ marginTop: 20 }, styles.container]}>
+                                        <TouchableHighlight
+                                            onPress={() => {
+                                                this.setModalVisible(!this.state.modalVisible);
+                                            }}>
+                                            <Icon name="times" size={25} style={{ color: "white" }}></Icon>
+                                        </TouchableHighlight>
+                                        <View style={{ marginTop: 200, }}>
+                                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
+                                            <Button icon={<Icon name="facebook" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Facebook" />
+                                            <Button color="white" look="secondary" content="Create account" />
+                                        </View>
+
+                                    </View>
+                                </View>
+                            </Modal>
+
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.setModalVisible(true);
+                                }}>
+                                <Text style={{ marginTop: 35, color: "white", fontSize: 16, }}>More option</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={[styles.textWhite, { marginTop: 130, opacity: 0.7 }]}>Nous utilisons des cookies pour personnaliser notre contenu et nos publicités, mesurer l'efficacité de nos publicités et offrir une expérience plus sûre.</Text>
                     </View>
 
                 </View>
