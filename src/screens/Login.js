@@ -15,8 +15,6 @@ import {
 } from 'react-native';
 
 import styles from '../style/Style';
-import Button from '../components/Button';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Header from '../components/Header';
 
 

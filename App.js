@@ -11,12 +11,13 @@ import {
 
 
 
-import styles from './src/style/Style';
-import LoggedOut from './src/screens/LoggedOut';
-import Login from './src/screens/Login'
+
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ForgetPassword from './src/screens/ForgetPassword'
+import LoggedOut from './src/screens/LoggedOut';
+import Login from './src/screens/Login'
 
 
 const MainStackNavigator = createStackNavigator({

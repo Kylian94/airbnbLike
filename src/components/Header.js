@@ -13,16 +13,7 @@ import {
 
 } from 'react-native';
 
-import {
-    LearnMoreLinks,
-    Colors,
-    DebugInstructions,
-    ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-
 
 export default class Header extends React.Component {
 
