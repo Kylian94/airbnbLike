@@ -38,6 +38,15 @@ export default StyleSheet.create({
     },
     container: {
         marginHorizontal: 20,
+    },
+    wrapper: {
+        display: "flex"
+    },
+    label: { fontWeight: "700", marginBottom: 10 },
+    inputFiled: {
+        borderBottomWidth: 1,
+        paddingTop: 5,
+        paddingBottom: 5
     }
 
 })

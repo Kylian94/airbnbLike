@@ -9,25 +9,29 @@ import {
   Image
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+
 
 import styles from './src/style/Style';
 import LoggedOut from './src/screens/LoggedOut';
+import Login from './src/screens/Login'
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import ForgetPassword from './src/screens/ForgetPassword'
 
 
+const MainStackNavigator = createStackNavigator({
 
-const App: () => React$Node = () => {
+  LoggedOut: { screen: LoggedOut },
+  Login: { screen: Login },
+  ForgetPassword: { screen: ForgetPassword },
 
-  return (
-    <LoggedOut />
-  );
-};
+},
+  {
+    headerMode: 'screen'
+  }
+)
+
+const App = createAppContainer(MainStackNavigator);
 
 
 

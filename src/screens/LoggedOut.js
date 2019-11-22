@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 
 import {
-    Header,
     LearnMoreLinks,
     Colors,
     DebugInstructions,
@@ -25,9 +24,17 @@ import styles from '../style/Style';
 import Button from '../components/Button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ModalLogin from '../components/ModalLogin'
+import Header from '../components/Header'
 
 
 export default class LoggedOut extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+        return {
+            header: (<Header title="Log in" back={() => navigation.goBack()} onPress={() => navigation.navigate('Login')} />),
+
+        }
+    };
+
     state = {
         modalVisible: false,
     };
@@ -41,7 +48,7 @@ export default class LoggedOut extends React.Component {
                 <StatusBar barStyle="light-content" backgroundColor="black" />
                 <View style={styles.backgroundApp}>
                     <View style={styles.container}>
-                        <Text style={{ textAlign: "right", marginTop: 15, color: "white" }}>Log in</Text>
+
                         <Image
                             style={{ width: 50, height: 50, marginTop: 120 }}
                             source={require('../img/logo.png')}
