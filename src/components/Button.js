@@ -23,7 +23,6 @@ export default class Button extends React.Component {
                     <View style={{}}>{this.props.icon}</View>
                     <Text style={[{ color: this.props.color }, styles.textButton]} color={this.props.color}>{this.props.content}</Text>
                 </View>
-
             </TouchableOpacity >
         )
 

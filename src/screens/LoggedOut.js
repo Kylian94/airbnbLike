@@ -8,7 +8,6 @@ import {
     StatusBar,
     Image,
     Modal,
-    Alert,
     TouchableHighlight,
     TouchableOpacity
 
@@ -57,17 +56,15 @@ export default class LoggedOut extends React.Component {
                                 animationType="slide"
                                 transparent={false}
                                 visible={this.state.modalVisible}
-                                onRequestClose={() => {
-                                    Alert.alert('Modal has been closed.');
-                                }}>
+                            >
                                 <View style={[styles.backgroundApp, { alignItems: "center" }]}>
                                     <View style={[{ marginTop: 20 }, styles.container]}>
-                                        <TouchableHighlight
+                                        <TouchableOpacity
                                             onPress={() => {
                                                 this.setModalVisible(!this.state.modalVisible);
                                             }}>
                                             <Icon name="times" size={25} style={{ color: "white" }}></Icon>
-                                        </TouchableHighlight>
+                                        </TouchableOpacity>
                                         <View style={{ marginTop: 200, }}>
                                             <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 80, top: -10 }}></Icon>} color="#00787E" look="primary" content="Google" />
                                             <Button icon={<Icon name="facebook" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 75, top: -10 }}></Icon>} color="#00787E" look="primary" content="Facebook" />
