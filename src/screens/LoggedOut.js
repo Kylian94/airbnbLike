@@ -47,7 +47,7 @@ export default class LoggedOut extends React.Component {
                             source={require('../img/logo.png')}
                         />
                         <Text style={[styles.textWhite, styles.title,]}>Welcome to Airbnb.</Text>
-                        <View style={{ alignItems: "center", marginTop: 50, }}>
+                        <View style={{ alignItems: "center", marginTop: 30, }}>
 
                             <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
                             <Button color="white" look="secondary" content="Create account" />
@@ -77,15 +77,14 @@ export default class LoggedOut extends React.Component {
                                     </View>
                                 </View>
                             </Modal>
-
                             <TouchableOpacity
                                 onPress={() => {
                                     this.setModalVisible(true);
                                 }}>
-                                <Text style={{ marginTop: 35, color: "white", fontSize: 16, }}>More option</Text>
+                                <Text style={{ color: "white", fontSize: 18, }}>More option</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text style={[styles.textWhite, { marginTop: 130, opacity: 0.7 }]}>Nous utilisons des cookies pour personnaliser notre contenu et nos publicités, mesurer l'efficacité de nos publicités et offrir une expérience plus sûre.</Text>
+                        <Text style={[styles.textWhite, { marginTop: 20, opacity: 0.7 }]}>We use cookies to personalize our content and advertising, measure the effectiveness of our advertising and provide a safer experience.</Text>
                     </View>
 
                 </View>
