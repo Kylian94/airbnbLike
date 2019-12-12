@@ -1,4 +1,5 @@
 import React from 'react';
+// (-1) faire le ménage, beaucoup de lib non utilisées (lisibilités)
 import {
     SafeAreaView,
     StyleSheet,
@@ -13,6 +14,8 @@ import {
 
 } from 'react-native';
 
+
+// (-1) faire le ménage, beaucoup de lib non utilisées (lisibilités)
 import {
     LearnMoreLinks,
     Colors,
@@ -50,6 +53,7 @@ export default class LoggedOut extends React.Component {
                     <View style={styles.container}>
 
                         <Image
+                            // (0) Pas très grave pour l'instant mais prendre l'habitude de mettre les styles dans un fichier à part
                             style={{ width: 50, height: 50, marginTop: 120 }}
                             source={require('../img/logo.png')}
                         />

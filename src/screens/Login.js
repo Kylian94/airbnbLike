@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Variables non utilisées
 import {
     SafeAreaView,
     StyleSheet,
@@ -16,6 +18,8 @@ import {
 
 import styles from '../style/Style';
 import Header from '../components/Header';
+
+// (-1) Ne pas utiliser de librairies tierces (sauf si précisées pendant l'exercice)
 import { Sae } from 'react-native-textinput-effects';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
@@ -23,6 +27,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 export default class Login extends React.Component {
 
+    // (+1)
     static navigationOptions = ({ navigation }) => {
         return {
             header: (<Header icon="arrow-left" back={() => navigation.goBack()} title="Forget password ?" onPress={() => navigation.navigate('ForgetPassword')} />),
@@ -39,6 +44,7 @@ export default class Login extends React.Component {
             <View style={[{ paddingTop: 22, flex: 1, backgroundColor: "#00787E" }]}>
                 <View style={styles.container}>
                     <Text style={[{ marginTop: 50, fontSize: 24 }, styles.textWhite]}>Connexion</Text>
+
 
                     <Sae
                         label={'Email Address'}
