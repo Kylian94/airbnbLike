@@ -1,16 +1,10 @@
+
 import React from 'react';
+
+// (-1) faire le ménage, beaucoup de lib non utilisées (lisibilités)
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
     View,
     Text,
-    StatusBar,
-    Image,
-    Modal,
-    TouchableHighlight,
-    TouchableOpacity,
-    TextInput
 
 } from 'react-native';
 
