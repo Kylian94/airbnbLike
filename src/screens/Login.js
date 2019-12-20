@@ -3,12 +3,14 @@ import {
     View,
     Text,
     TextInput,
-    Alert
+    Alert,
+    TouchableOpacity,
 } from 'react-native';
 
 import styles from '../style/Style';
 import Header from '../components/Header';
 import Button from '../components/Button';
+
 //import { Sae } from 'react-native-textinput-effects';
 //import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
@@ -24,7 +26,13 @@ export default class Login extends React.Component {
         email: null,
         password: null,
         display: 0,
+        passwordVisible: true
     };
+
+
+    setPasswordVisible(visible) {
+        this.setState({ passwordVisible: visible });
+    }
 
     validate = (email) => {
 
@@ -76,10 +84,15 @@ export default class Login extends React.Component {
                         style={[{ marginBottom: 15 }, styles.textWhite, styles.inputFiled]}
                         value={this.state.email}
                     />
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 20 }}>
+                        <Text style={[styles.textWhite, styles.label]}>
+                            Password
+                        </Text>
+                        <TouchableOpacity onPress={() => this.setPasswordVisible(!this.state.passwordVisible)}>
+                            <Text style={styles.textWhite}>Show</Text></TouchableOpacity>
+                    </View>
 
-                    <Text style={[{ marginTop: 20 }, styles.textWhite, styles.label]}>
-                        Password
-                    </Text>
+
                     <TextInput
                         onBlur={() => {
                             this.validateForm(this.state.email, this.state.password)
@@ -87,10 +100,11 @@ export default class Login extends React.Component {
                         autoCorrect={false}
                         onChangeText={(text) => { this.setState({ password: text }) }}
                         labelStyle={{ color: "white", fontSize: 22 }}
-                        secureTextEntry={true}
+                        secureTextEntry={this.state.passwordVisible}
                         style={[{ marginBottom: 30 }, styles.textWhite, styles.inputFiled]}
                         value={this.state.password}
                     />
+
                     <View opacity={this.state.display}>
                         <Button color="#00787E" look="primary" content="Log in" />
                     </View>
