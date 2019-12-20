@@ -9,8 +9,9 @@ import {
 
 import styles from '../style/Style';
 import Header from '../components/Header';
+import Button from '../components/Button';
 //import { Sae } from 'react-native-textinput-effects';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+//import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 
 
@@ -23,8 +24,9 @@ export default class Login extends React.Component {
     };
 
     state = {
-        email: "",
-        password: ""
+        email: null,
+        password: null,
+        display: 0,
     };
 
     validate = (email) => {
@@ -51,6 +53,14 @@ export default class Login extends React.Component {
             this.setState({ email: email })
         }
     }
+    validateForm = (email, password) => {
+        if (email && password) {
+            this.setState({ display: 1 })
+
+        } else {
+            this.setState({ display: 0 })
+        }
+    }
 
     render() {
 
@@ -75,13 +85,19 @@ export default class Login extends React.Component {
                         Password
                     </Text>
                     <TextInput
+                        onBlur={() => {
+                            this.validateForm(this.state.email, this.state.password)
+                        }}
                         autoCorrect={false}
                         onChangeText={(text) => { this.setState({ password: text }) }}
                         labelStyle={{ color: "white", fontSize: 22 }}
                         secureTextEntry={true}
-                        style={[styles.textWhite, styles.inputFiled]}
+                        style={[{ marginBottom: 30 }, styles.textWhite, styles.inputFiled]}
                         value={this.state.password}
                     />
+                    <View opacity={this.state.display}>
+                        <Button color="#00787E" look="primary" content="Log in" />
+                    </View>
                 </View>
             </View>
         );
