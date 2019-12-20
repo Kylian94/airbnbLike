@@ -1,20 +1,13 @@
 import React from 'react';
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
     View,
     Text,
-    StatusBar,
     TouchableOpacity
 } from 'react-native';
 
 import styles from '../style/Style'
 
-
-
 export default class Button extends React.Component {
-
 
     render() {
         return (
@@ -25,7 +18,5 @@ export default class Button extends React.Component {
                 </View>
             </TouchableOpacity >
         )
-
     }
-
 }

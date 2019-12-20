@@ -1,14 +1,7 @@
 import React from 'react';
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
     View,
     Text,
-    StatusBar,
-    Image,
-    Modal,
-    TouchableHighlight,
     TouchableOpacity
 
 } from 'react-native';
@@ -27,8 +20,6 @@ export default class Header extends React.Component {
                 <TouchableOpacity onPress={() => this.props.onPress()}>
                     <Text style={{ color: "white" }}>{this.props.title}</Text>
                 </TouchableOpacity>
-
-
             </View>
         );
     }

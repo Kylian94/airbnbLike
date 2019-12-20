@@ -1,15 +1,7 @@
 import React from 'react';
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
     View,
     Text,
-    StatusBar,
-    Image,
-    Modal,
-    TouchableHighlight,
-    TouchableOpacity,
     TextInput,
     Alert
 
@@ -27,28 +19,23 @@ export default class Login extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
             header: (<Header icon="arrow-left" back={() => navigation.goBack()} title="Forget password ?" onPress={() => navigation.navigate('ForgetPassword')} />),
-
-
         }
     };
 
     state = {
         email: "",
-        emailError: false,
         password: ""
     };
-
 
     validate = (email) => {
 
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (reg.test(email) === false) {
-            this.setState({ email: email, emailError: true })
+            this.setState({ email: email })
             Alert.alert(
                 'Email error',
                 'Your email is not valid',
                 [
-
                     {
                         text: 'Cancel',
                         onPress: () => console.log('Cancel Pressed'),
@@ -61,14 +48,11 @@ export default class Login extends React.Component {
             return false;
         }
         else {
-            this.setState({ email: email, emailError: false })
+            this.setState({ email: email })
         }
     }
 
-
     render() {
-
-
 
         return (
             <View style={[{ paddingTop: 22, flex: 1, backgroundColor: "#00787E" }]}>
@@ -98,7 +82,6 @@ export default class Login extends React.Component {
                         style={[styles.textWhite, styles.inputFiled]}
                         value={this.state.password}
                     />
-
                 </View>
             </View>
         );

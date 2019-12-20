@@ -1,21 +1,10 @@
 import React from 'react';
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
     View,
     Text,
-    StatusBar,
-    Image,
-    Modal,
-    TouchableHighlight,
-    TouchableOpacity,
-    TextInput
-
 } from 'react-native';
 
 import Header from '../components/Header';
-
 
 export default class Login extends React.Component {
 
@@ -26,8 +15,6 @@ export default class Login extends React.Component {
 
         }
     };
-
-
 
     render() {
         return (

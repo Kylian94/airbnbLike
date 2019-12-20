@@ -1,18 +1,3 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Image
-} from 'react-native';
-
-
-
-
-
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import ForgetPassword from './src/screens/ForgetPassword'
