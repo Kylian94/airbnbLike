@@ -36,7 +36,7 @@ export default class Login extends React.Component {
 
     validate = (email) => {
 
-        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (reg.test(email) === false) {
             this.setState({ email: email })
             Alert.alert(
@@ -66,13 +66,18 @@ export default class Login extends React.Component {
         }
     }
 
+    setPassword = (password) => {
+        this.setState({ password })
+    }
+
     render() {
 
         return (
-            <View style={[{ paddingTop: 22, flex: 1, backgroundColor: "#00787E" }]}>
-                <View style={styles.container}>
-                    <Text style={[{ marginTop: 50, fontSize: 24 }, styles.textWhite]}>Connexion</Text>
-                    <Text style={[{ marginTop: 30 }, styles.textWhite, styles.label]}>
+            <View style={styles.container}>
+                <Text style={styles.connexionLabel}>Connexion</Text>
+
+                <View style={styles.input}>
+                    <Text style={[styles.textWhite, styles.label]}>
                         Email Address
                     </Text>
                     <TextInput
@@ -82,35 +87,39 @@ export default class Login extends React.Component {
                             this.validateForm(this.state.email, this.state.password)
                         }}
                         labelStyle={{ color: "white", fontSize: 22 }}
-                        style={[{ marginBottom: 15 }, styles.textWhite, styles.inputFiled]}
+                        style={[styles.textWhite, styles.inputFiled]}
                         value={this.state.email}
                     />
-                    <View style={{ flexDirection: "row", justifyContent: "space-between", marginTop: 20 }}>
+                </View>
+
+                <View style={styles.input}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                         <Text style={[styles.textWhite, styles.label]}>
                             Password
                         </Text>
                         <TouchableOpacity onPress={() => this.setPasswordVisible(!this.state.passwordVisible)}>
-                            <Text style={styles.textWhite}>Show</Text></TouchableOpacity>
+                            <Text style={styles.textWhite}>Show</Text>
+                        </TouchableOpacity>
                     </View>
-
-
                     <TextInput
                         onBlur={() => {
                             this.validateForm(this.state.email, this.state.password)
                         }}
                         autoCorrect={false}
-                        onChangeText={(text) => { this.setState({ password: text }) }}
+                        onChangeText={this.setPassword}
                         labelStyle={{ color: "white", fontSize: 22 }}
                         secureTextEntry={this.state.passwordVisible}
-                        style={[{ marginBottom: 30 }, styles.textWhite, styles.inputFiled]}
+                        style={styles.textWhite, styles.inputFiled}
                         value={this.state.password}
                     />
-
-                    <View opacity={this.state.display}>
-                        <Button color="#00787E" look="primary" content="Log in" />
-                    </View>
                 </View>
-            </View>
+
+
+                <View opacity={this.state.display}>
+                    <Button color="#00787E" look="primary" content="Log in" />
+                </View>
+
+            </View >
         );
     }
 

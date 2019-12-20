@@ -36,9 +36,8 @@ export default StyleSheet.create({
         fontSize: 32,
         marginTop: 30,
     },
-    container: {
-        marginHorizontal: 20,
-    },
+    container: { paddingTop: 22, paddingHorizontal: 20, flex: 1, backgroundColor: "#00787E" }
+    ,
     wrapper: {
         display: "flex"
     },
@@ -48,6 +47,13 @@ export default StyleSheet.create({
         borderColor: "white",
         paddingTop: 5,
         paddingBottom: 5
+    },
+    connexionLabel: {
+        fontSize: 24,
+        color: "white",
+    },
+    input: {
+        marginVertical: 30
     }
 
 })
