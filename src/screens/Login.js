@@ -79,6 +79,7 @@ export default class Login extends React.Component {
                         onChangeText={(text) => { this.setState({ email: text }) }}
                         onBlur={() => {
                             this.validate(this.state.email)
+                            this.validateForm(this.state.email, this.state.password)
                         }}
                         labelStyle={{ color: "white", fontSize: 22 }}
                         style={[{ marginBottom: 15 }, styles.textWhite, styles.inputFiled]}
