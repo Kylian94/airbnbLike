@@ -4,7 +4,6 @@ import {
     Text,
     TextInput,
     Alert
-
 } from 'react-native';
 
 import styles from '../style/Style';
@@ -12,8 +11,6 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 //import { Sae } from 'react-native-textinput-effects';
 //import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-
-
 
 export default class Login extends React.Component {
 
@@ -36,7 +33,7 @@ export default class Login extends React.Component {
             this.setState({ email: email })
             Alert.alert(
                 'Email error',
-                'Your email is not valid',
+                'Your email is not valid \n Example : johnDoe@email.com',
                 [
                     {
                         text: 'Cancel',
@@ -45,7 +42,7 @@ export default class Login extends React.Component {
                     },
                     { text: 'OK', onPress: () => console.log('OK Pressed') },
                 ],
-                { cancelable: true },
+                { cancelable: false },
             );
             return false;
         }
@@ -56,7 +53,6 @@ export default class Login extends React.Component {
     validateForm = (email, password) => {
         if (email && password) {
             this.setState({ display: 1 })
-
         } else {
             this.setState({ display: 0 })
         }
@@ -68,7 +64,7 @@ export default class Login extends React.Component {
             <View style={[{ paddingTop: 22, flex: 1, backgroundColor: "#00787E" }]}>
                 <View style={styles.container}>
                     <Text style={[{ marginTop: 50, fontSize: 24 }, styles.textWhite]}>Connexion</Text>
-                    <Text style={[{ marginTop: 20 }, styles.textWhite, styles.label]}>
+                    <Text style={[{ marginTop: 30 }, styles.textWhite, styles.label]}>
                         Email Address
                     </Text>
                     <TextInput
