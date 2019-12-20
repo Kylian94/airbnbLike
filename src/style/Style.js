@@ -42,9 +42,10 @@ export default StyleSheet.create({
     wrapper: {
         display: "flex"
     },
-    label: { fontWeight: "700", marginBottom: 10 },
+    label: { fontWeight: "700", color: "white" },
     inputFiled: {
         borderBottomWidth: 1,
+        borderColor: "white",
         paddingTop: 5,
         paddingBottom: 5
     }
