@@ -2,14 +2,13 @@ import React from 'react';
 import {
     View,
     Text,
-    TextInput,
-    Alert,
     TouchableOpacity,
+    Alert,
 } from 'react-native';
 
 import styles from '../style/Style';
 import Header from '../components/Header';
-import Button from '../components/Button';
+import Input from '../components/Input';
 
 //import { Sae } from 'react-native-textinput-effects';
 //import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -26,100 +25,80 @@ export default class Login extends React.Component {
         email: null,
         password: null,
         display: 0,
-        passwordVisible: true
+        emailValid: 1
     };
 
-
-    setPasswordVisible(visible) {
-        this.setState({ passwordVisible: visible });
-    }
-
-    validate = (email) => {
-
+    validate = (content) => {
         const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (reg.test(email) === false) {
-            this.setState({ email: email })
-            Alert.alert(
-                'Email error',
-                'Your email is not valid \n Example : johnDoe@email.com',
-                [
-                    {
-                        text: 'Cancel',
-                        onPress: () => console.log('Cancel Pressed'),
-                        style: 'cancel',
-                    },
-                    { text: 'OK', onPress: () => console.log('OK Pressed') },
-                ],
-                { cancelable: false },
-            );
-            return false;
-        }
-        else {
-            this.setState({ email: email })
+        if (reg.test(content)) {
+            console.log('passe a 0')
+            this.setState({ emailValid: 0 });
+        } else {
+            console.log('passe a 1')
+            this.setState({ emailValid: 1 });
         }
     }
-    validateForm = (email, password) => {
-        if (email && password) {
+    validateForm = () => {
+
+
+        if (this.state.emailValid == 0 && this.state.password) {
+            console.log('ok')
             this.setState({ display: 1 })
-        } else {
+        }
+        if (this.state.emailValid == 1 && this.state.password) {
+            console.log('non')
             this.setState({ display: 0 })
         }
     }
 
-    setPassword = (password) => {
-        this.setState({ password })
-    }
-
     render() {
-
+        const { navigation } = this.props;
         return (
-            <View style={styles.container}>
-                <Text style={styles.connexionLabel}>Connexion</Text>
+            <View style={styles.home}>
+                <Text style={[styles.titleSecondary, styles.textWhite]}>Connexion</Text>
 
-                <View style={styles.input}>
-                    <Text style={[styles.textWhite, styles.label]}>
-                        Email Address
-                    </Text>
-                    <TextInput
-                        onChangeText={(text) => { this.setState({ email: text }) }}
-                        onBlur={() => {
-                            this.validate(this.state.email)
-                            this.validateForm(this.state.email, this.state.password)
-                        }}
-                        labelStyle={{ color: "white", fontSize: 22 }}
-                        style={[styles.textWhite, styles.inputFiled]}
-                        value={this.state.email}
-                    />
+                <Input type="email" label="Email"
+                    onChangeText={(text) => {
+                        this.setState({ email: text })
+                        //console.log(this.state.email)
+                    }}
+                    validate={(email) => {
+                        this.validate(email)
+
+                    }}
+                    validateForm={() => {
+                        this.validateForm()
+                        console.log(this.state.emailValid + ' ' + 'display : ' + this.state.display)
+                    }}
+                />
+
+                <Input type="password" label="Password"
+                    onChangeText={(text) => {
+                        this.setState({ password: text })
+
+                    }}
+                    validateForm={() => {
+                        this.validateForm()
+                        console.log(this.state.emailValid + ' ' + 'display : ' + this.state.display)
+                    }}
+                />
+
+                <View opacity={this.state.display} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "center" }} >
+                    <TouchableOpacity
+                        onPress={() => { navigation.navigate('ExploreContainer') }}
+                        style={[styles.buttonPrimary, styles.button]} >
+                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
+                            <Text style={[styles.textButton, { color: '#00787E' }]}>Log in</Text>
+                        </View>
+                    </TouchableOpacity >
+                </View>
+                <View opacity={this.state.emailValid}>
+                    <Text style={styles.textWhite}>Please enter a valid mail address</Text>
                 </View>
 
-                <View style={styles.input}>
-                    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                        <Text style={[styles.textWhite, styles.label]}>
-                            Password
-                        </Text>
-                        <TouchableOpacity onPress={() => this.setPasswordVisible(!this.state.passwordVisible)}>
-                            <Text style={styles.textWhite}>Show</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <TextInput
-                        onBlur={() => {
-                            this.validateForm(this.state.email, this.state.password)
-                        }}
-                        autoCorrect={false}
-                        onChangeText={this.setPassword}
-                        labelStyle={{ color: "white", fontSize: 22 }}
-                        secureTextEntry={this.state.passwordVisible}
-                        style={styles.textWhite, styles.inputFiled}
-                        value={this.state.password}
-                    />
-                </View>
-
-
-                <View opacity={this.state.display}>
-                    <Button color="#00787E" look="primary" content="Log in" />
-                </View>
 
             </View >
+
         );
     }
 

@@ -36,7 +36,7 @@ export default StyleSheet.create({
         fontSize: 32,
         marginTop: 30,
     },
-    container: { paddingTop: 22, paddingHorizontal: 20, flex: 1, backgroundColor: "#00787E" }
+    home: { paddingTop: 22, paddingHorizontal: 20, flex: 1, backgroundColor: "#00787E" }
     ,
     wrapper: {
         display: "flex"
@@ -48,12 +48,34 @@ export default StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 5
     },
-    connexionLabel: {
+    titleSecondary: {
         fontSize: 24,
-        color: "white",
+
     },
     input: {
         marginVertical: 30
-    }
+    },
+    container: {
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    titleLight: {
+        fontSize: 20,
+    },
+    card: {
+        borderRadius: 10,
+    },
+    cardTitle: {
+        marginTop: 5,
+        fontSize: 10,
+    },
+    cardDesc: {
+        fontWeight: "bold",
+        fontSize: 13,
+    },
+    cardPrice: {
+        fontSize: 13,
+
+    },
 
 })

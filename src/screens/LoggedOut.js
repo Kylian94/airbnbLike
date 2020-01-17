@@ -27,6 +27,7 @@ export default class LoggedOut extends React.Component {
         this.setState({ modalVisible: visible });
     }
     render() {
+
         return (
             <>
                 <StatusBar barStyle="light-content" backgroundColor="black" />
@@ -39,8 +40,8 @@ export default class LoggedOut extends React.Component {
                         <Text style={[styles.textWhite, styles.title,]}>Welcome to Airbnb.</Text>
                         <View style={{ alignItems: "center", marginTop: 30, }}>
 
-                            <Button icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
-                            <Button color="white" look="secondary" content="Create account" />
+                            <Button type="google" icon={<Icon name="google" size={20} style={{ color: '#00787E', marginRight: 10, position: "absolute", right: 20, top: -10 }}></Icon>} color="#00787E" look="primary" content="Continue with Google" />
+                            <Button color="white" look="secondary" type="create" content="Create account" />
                         </View>
                         <ModalLogin />
                         <Text style={[styles.textWhite, { marginTop: 20, opacity: 0.7 }]}>We use cookies to personalize our content and advertising, measure the effectiveness of our advertising and provide a safer experience.</Text>
