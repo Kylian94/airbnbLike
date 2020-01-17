@@ -83,7 +83,7 @@ export default class Login extends React.Component {
                     }}
                 />
 
-                <View opacity={1} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "center" }} >
+                <View opacity={this.state.display} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "center" }} >
                     <TouchableOpacity
                         onPress={() => { navigation.navigate('ExploreContainer') }}
                         style={[styles.buttonPrimary, styles.button]} >

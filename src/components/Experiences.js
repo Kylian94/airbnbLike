@@ -21,7 +21,7 @@ export default class Experiences extends React.Component {
                     {
                         this.props.experiences.map(function (experience, index) {
                             return (
-                                <View>
+                                <View key={index}>
                                     <Image
 
                                         style={[{ width: 150, height: 100, marginRight: 20, position: "relative", zIndex: 1 }, styles.card]}
