@@ -57,7 +57,8 @@ export default StyleSheet.create({
     },
     container: {
         paddingLeft: 20,
-        paddingRight: 20,
+
+
     },
     titleLight: {
         fontSize: 20,
