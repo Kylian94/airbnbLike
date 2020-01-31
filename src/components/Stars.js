@@ -26,9 +26,9 @@ export default class Stars extends React.Component {
                 {
                     nbStars.map(function (value, index) {
 
-                        return (<View style={{ height: 12 }}>
+                        return (<View style={{ height: 12 }} key={"star" + index}>
                             <Icon
-                                key={"star" + index}
+
                                 name="star"
                                 size={size}
                                 color={text > index ? colors.green02 : colors.gray03}
