@@ -4,6 +4,8 @@ import {
     View,
 } from 'react-native';
 
+import photos from "../data/photos/index"
+
 export default class Categories extends React.Component {
     render() {
         return (
@@ -11,9 +13,10 @@ export default class Categories extends React.Component {
                 {
 
                     this.props.categories.map(function (category, id) {
+                        //console.log(category.photo)
                         return <Image
                             style={{ width: 100, height: 100 }}
-                            source={category.photo}
+                            source={photos[category.photo]}
                             key={id}
                         />;
                     })

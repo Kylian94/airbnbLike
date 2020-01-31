@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "photo": "listing1",
+        "type": "BOAT RIDE",
+        "title": "Sail past Japan's largest port with a certified skipper",
+        "location": "Tokyo, Japan",
+        "price": 60,
+        "priceType": "per person",
+        "stars": 29,
+        "color": "gray04"
+    },
+    {
+        "id": 2,
+        "photo": "listing2",
+        "type": "CHEESE TASTING",
+        "title": "Funny cheesemonger takes you on a Tour de Fromage",
+        "location": "Paris, France",
+        "price": 70,
+        "priceType": "per person",
+        "stars": 4,
+        "color": "darkOrange"
+    }
+]

@@ -1,14 +1,17 @@
 import React from 'react';
 import {
-    Image,
+
     View,
     ScrollView,
-    Text,
+
 } from 'react-native';
 
-import styles from '../style/Style';
-import Stars from './Stars';
-import Like from './Like';
+
+import Card from './Card';
+import photos from "../data/photos/index"
+import colors from "../style/colors"
+
+
 
 
 export default class Experiences extends React.Component {
@@ -20,20 +23,18 @@ export default class Experiences extends React.Component {
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {
                         this.props.experiences.map(function (experience, index) {
+
                             return (
-                                <View key={index}>
-                                    <Image
-
-                                        style={[{ width: 150, height: 100, marginRight: 20, position: "relative", zIndex: 1 }, styles.card]}
-                                        source={experience.photo}
-                                    />
-                                    <Like></Like>
-
-                                    <Text style={[styles.cardTitle, { color: experience.color }]}>{experience.type}</Text>
-                                    <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.cardDesc, { width: 150 }]}>{experience.title}</Text>
-                                    <Text style={[styles.cardPrice]}>{experience.price}$ {experience.priceType}</Text>
-                                    <Stars text={experience.stars} />
-                                </View>
+                                <Card
+                                    key={"experience" + index}
+                                    type={experience.type}
+                                    title={experience.title}
+                                    photo={photos[experience.photo]}
+                                    price={experience.price}
+                                    priceType={experience.priceType}
+                                    stars={experience.stars}
+                                    color={colors[experience.color]}
+                                />
                             )
                         })
                     }
