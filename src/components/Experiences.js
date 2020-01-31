@@ -6,13 +6,9 @@ import {
 
 } from 'react-native';
 
-
 import Card from './Card';
 import photos from "../data/photos/index"
 import colors from "../style/colors"
-
-
-
 
 export default class Experiences extends React.Component {
 

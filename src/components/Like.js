@@ -15,7 +15,6 @@ export default class Like extends React.Component {
         color: "white"
     }
 
-
     render() {
 
         return (

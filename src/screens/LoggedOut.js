@@ -47,8 +47,6 @@ export default class LoggedOut extends React.Component {
                         <Text style={[styles.textWhite, { marginTop: 20, opacity: 0.7 }]}>We use cookies to personalize our content and advertising, measure the effectiveness of our advertising and provide a safer experience.</Text>
                     </View>
                 </View>
-
-
             </>
         )
     }

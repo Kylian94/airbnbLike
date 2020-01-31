@@ -18,8 +18,6 @@ export default class Input extends React.Component {
         passwordVisible: true,
     };
 
-
-
     setPasswordVisible(visible) {
         this.setState({ passwordVisible: visible });
     }

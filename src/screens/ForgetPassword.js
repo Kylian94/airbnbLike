@@ -11,8 +11,6 @@ export default class Login extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
             header: (<Header back={() => navigation.goBack()} icon="arrow-left" title="" onPress={() => navigation.navigate('Login')} />),
-
-
         }
     };
 

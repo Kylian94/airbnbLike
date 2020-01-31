@@ -3,15 +3,11 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Alert,
 } from 'react-native';
 
 import styles from '../style/Style';
 import Header from '../components/Header';
 import Input from '../components/Input';
-
-//import { Sae } from 'react-native-textinput-effects';
-//import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 
 export default class Login extends React.Component {
 
@@ -95,11 +91,7 @@ export default class Login extends React.Component {
                 <View opacity={this.state.emailValid}>
                     <Text style={styles.textWhite}>Please enter a valid mail address</Text>
                 </View>
-
-
             </View >
-
         );
     }
-
 }
