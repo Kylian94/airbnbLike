@@ -19,7 +19,9 @@ export default class ExploreContainer extends React.Component {
         super(props)
         this.state = {
             categories: [],
-            experiences: []
+            experiences: [],
+            homes: [],
+            popular: [],
         }
     }
     componentDidMount() {
@@ -28,6 +30,8 @@ export default class ExploreContainer extends React.Component {
             .then((jsonData) => {
                 this.setState({ experiences: jsonData.experiences.listings })
                 this.setState({ categories: jsonData.categories })
+                this.setState({ homes: jsonData.homes.listings })
+                this.setState({ popular: jsonData.popular.listings })
 
             }).catch((error) => {
                 console.error(error);
@@ -48,6 +52,22 @@ export default class ExploreContainer extends React.Component {
                     </TouchableOpacity>
                 </View>
                 <Experiences experiences={this.state.experiences} />
+
+                <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
+                    <Text style={[styles.titleLight, {}]}>Homes</Text>
+                    <TouchableOpacity>
+                        <Text>See all ></Text>
+                    </TouchableOpacity>
+                </View>
+                <Experiences experiences={this.state.homes} />
+
+                <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
+                    <Text style={[styles.titleLight, {}]}>Popular</Text>
+                    <TouchableOpacity>
+                        <Text>See all ></Text>
+                    </TouchableOpacity>
+                </View>
+                <Experiences experiences={this.state.popular} />
 
             </ScrollView>
         )

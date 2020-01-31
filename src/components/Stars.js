@@ -16,9 +16,13 @@ export default class Stars extends React.Component {
         const { size } = 10
         var nbStars = [1, 2, 3, 4, 5]
 
+        this.state = {
+            visible: 1
+        }
+
         return (
 
-            <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }} opacity={this.props.text} >
                 {
                     nbStars.map(function (value, index) {
 

@@ -26,6 +26,7 @@ export default class Card extends React.Component {
                 <Text style={[styles.cardTitle, { color: this.props.color }]}>{this.props.type}</Text>
                 <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.cardDesc, { width: 150 }]}>{this.props.title}</Text>
                 <Text style={[styles.cardPrice]}>{this.props.price}$ {this.props.priceType}</Text>
+
                 <Stars text={this.props.stars} color={this.props.color} />
             </View>
 
