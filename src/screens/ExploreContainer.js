@@ -13,25 +13,23 @@ import Experiences from "../components/Experiences"
 import categories from "../data/categories.json"
 import experiences from "../data/experiences.json"
 
-export default class ExploreContainer extends React.Component {
+import { connect } from 'react-redux';
+import { Actions } from '../actions'
+
+class ExploreContainer extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            categories: [],
-            experiences: [],
-            homes: [],
-            popular: [],
-        }
     }
     componentDidMount() {
         return fetch('https://api.myjson.com/bins/61fqq') // requête vers l'API
             .then((response) => response.json())
-            .then((jsonData) => {
-                this.setState({ experiences: jsonData.experiences.listings })
-                this.setState({ categories: jsonData.categories })
-                this.setState({ homes: jsonData.homes.listings })
-                this.setState({ popular: jsonData.popular.listings })
+            .then((results) => {
+                // this.setState({ experiences: jsonData.experiences.listings })
+                // this.setState({ categories: jsonData.categories })
+                // this.setState({ homes: jsonData.homes.listings })
+                // this.setState({ popular: jsonData.popular.listings })
+                this.props.setListings(results)
 
             }).catch((error) => {
                 console.error(error);
@@ -43,7 +41,7 @@ export default class ExploreContainer extends React.Component {
             <ScrollView style={[styles.container]}>
 
                 <Text style={[styles.titleSecondary, { marginTop: 15 }]}>Explore airbnb</Text>
-                <Categories categories={this.state.categories} />
+                <Categories categories={this.props.categories} />
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, {}]}>Experiences</Text>
@@ -51,7 +49,7 @@ export default class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.state.experiences} />
+                <Experiences experiences={this.props.experiences.listings} />
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, {}]}>Homes</Text>
@@ -59,7 +57,7 @@ export default class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.state.homes} />
+                <Experiences experiences={this.props.homes.listings} />
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, { paddingRight: 20 }]}>Popular</Text>
@@ -67,9 +65,24 @@ export default class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.state.popular} />
+                <Experiences experiences={this.props.popular.listings} />
 
             </ScrollView>
         )
     }
 }
+const mapStateToProps = (state) => ({
+    categories: state.listings.categories,
+    experiences: state.listings.experiences,
+    homes: state.listings.homes,
+    popular: state.listings.popular,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setListings: (results) => dispatch(Actions.setListings(results))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ExploreContainer)
