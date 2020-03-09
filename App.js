@@ -31,6 +31,7 @@ import React, { Component } from 'react'
 import Navigation from "./src/navigation"
 import reducers from "./src/reducers"
 import { composeWithDevTools } from 'redux-devtools-extension'
+
 const store = createStore(reducers, composeWithDevTools())
 class App extends Component {
   render() {
@@ -41,4 +42,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

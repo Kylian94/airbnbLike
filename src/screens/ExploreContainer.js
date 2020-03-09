@@ -10,11 +10,12 @@ import styles from '../style/Style';
 import Categories from '../components/Categories';
 import Experiences from "../components/Experiences"
 
-import categories from "../data/categories.json"
-import experiences from "../data/experiences.json"
+// import categories from "../data/categories.json"
+// import experiences from "../data/experiences.json"
 
 import { connect } from 'react-redux';
-import { Actions } from '../actions'
+import { Actions } from '../actions';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 class ExploreContainer extends React.Component {
 
@@ -49,7 +50,7 @@ class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.props.experiences.listings} />
+                <Experiences experiences={this.props.experiences} />
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, {}]}>Homes</Text>
@@ -57,7 +58,7 @@ class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.props.homes.listings} />
+                <Experiences experiences={this.props.homes} />
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, { paddingRight: 20 }]}>Popular</Text>
@@ -65,12 +66,12 @@ class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.props.popular.listings} />
-
+                <Experiences experiences={this.props.popular} />
             </ScrollView>
         )
     }
 }
+
 const mapStateToProps = (state) => ({
     categories: state.listings.categories,
     experiences: state.listings.experiences,

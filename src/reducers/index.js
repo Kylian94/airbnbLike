@@ -13,9 +13,9 @@ const listingsReducer = (state = initialState, action) => {
             return {
                 ...state, // On recopie le state d'origine, on ne le modifie JAMAIS directement
                 categories: action.payload.categories,
-                experiences: action.payload.experiences,
-                homes: action.payload.homes,
-                popular: action.payload.popular // On ajoute les valeurs à modifier et on retourne un NOUVEAU state
+                experiences: action.payload.experiences.listings,
+                homes: action.payload.homes.listings,
+                popular: action.payload.popular.listings // On ajoute les valeurs à modifier et on retourne un NOUVEAU state
             }
         default:
             return state // pour les cas restant on renvoie le state d'origine
