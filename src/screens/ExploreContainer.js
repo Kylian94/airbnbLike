@@ -3,7 +3,8 @@ import {
     Text,
     ScrollView,
     View,
-    TouchableOpacity
+    TouchableOpacity,
+    AsyncStorage
 } from 'react-native';
 
 import styles from '../style/Style';
@@ -21,9 +22,21 @@ class ExploreContainer extends React.Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            userToken: '',
+        };
     }
     componentDidMount() {
-        return fetch('https://api.myjson.com/bins/61fqq') // requête vers l'API
+
+
+        AsyncStorage.getItem('userToken').then((userToken) => {
+            if (userToken) {
+                this.setState({ userToken: userToken });
+
+            }
+        });
+
+        return fetch('https://my-json-server.typicode.com/amallo/bbnb-sample/blob/master/experiences') // requête vers l'API
             .then((response) => response.json())
             .then((results) => {
                 // this.setState({ experiences: jsonData.experiences.listings })
@@ -31,10 +44,14 @@ class ExploreContainer extends React.Component {
                 // this.setState({ homes: jsonData.homes.listings })
                 // this.setState({ popular: jsonData.popular.listings })
                 this.props.setListings(results)
+                this.props.setAsyncStorage(this.state.userToken)
 
             }).catch((error) => {
                 console.error(error);
             });
+
+
+
     }
     render() {
 
@@ -42,7 +59,7 @@ class ExploreContainer extends React.Component {
             <ScrollView style={[styles.container]}>
 
                 <Text style={[styles.titleSecondary, { marginTop: 15 }]}>Explore airbnb</Text>
-                <Categories categories={this.props.categories} />
+                {/* <Categories categories={this.props.categories} /> */}
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, {}]}>Experiences</Text>
@@ -58,7 +75,7 @@ class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.props.homes} />
+                {/* <Experiences experiences={this.props.homes} /> */}
 
                 <View style={{ flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 20 }}>
                     <Text style={[styles.titleLight, { paddingRight: 20 }]}>Popular</Text>
@@ -66,21 +83,22 @@ class ExploreContainer extends React.Component {
                         <Text style={{ paddingRight: 20 }}>See all ></Text>
                     </TouchableOpacity>
                 </View>
-                <Experiences experiences={this.props.popular} />
+                {/* <Experiences experiences={this.props.popular} /> */}
             </ScrollView>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    categories: state.listings.categories,
+    //categories: state.listings.categories,
     experiences: state.listings.experiences,
-    homes: state.listings.homes,
-    popular: state.listings.popular,
+    //homes: state.listings.homes,
+    //popular: state.listings.popular,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    setListings: (results) => dispatch(Actions.setListings(results))
+    setListings: (results) => dispatch(Actions.setListings(results)),
+    setAsyncStorage: (userToken) => dispatch(Actions.setAsyncStorage(userToken))
 })
 
 export default connect(

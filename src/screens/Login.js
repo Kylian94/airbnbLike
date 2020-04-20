@@ -3,7 +3,10 @@ import {
     View,
     Text,
     TouchableOpacity,
+
 } from 'react-native';
+
+import { AsyncStorage } from 'react-native';
 
 import styles from '../style/Style';
 import Header from '../components/Header';
@@ -21,7 +24,8 @@ export default class Login extends React.Component {
         email: null,
         password: null,
         display: 0,
-        emailValid: 1
+        emailValid: 1,
+        asyncStorage: ""
     };
 
     validate = (content) => {
@@ -45,6 +49,32 @@ export default class Login extends React.Component {
             console.log('non')
             this.setState({ display: 0 })
         }
+    }
+
+    login = () => {
+
+        const { password, email } = this.state
+        return fetch('https://bbnb-booking.app2b.now.sh/api/users/signIn', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        })
+            .then((response) => response.json())
+            .then((response) => {
+                // sauvegarde du token dabs le local storage
+                return AsyncStorage
+                    .setItem('userToken', response.authorization)
+                    .then(() => {
+                        this.props.navigation.navigate('ExploreContainer')
+                    })
+
+            })
     }
 
     render() {
@@ -81,7 +111,7 @@ export default class Login extends React.Component {
 
                 <View opacity={1} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "center" }} >
                     <TouchableOpacity
-                        onPress={() => { navigation.navigate('ExploreContainer') }}
+                        onPress={this.login}
                         style={[styles.buttonPrimary, styles.button]} >
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
                             <Text style={[styles.textButton, { color: '#00787E' }]}>Log in</Text>

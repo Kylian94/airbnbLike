@@ -4,7 +4,8 @@ const initialState = {
     categories: [],
     experiences: [],
     homes: [],
-    popular: []
+    popular: [],
+    asyncStorage: ""
 }
 
 const listingsReducer = (state = initialState, action) => {
@@ -12,10 +13,16 @@ const listingsReducer = (state = initialState, action) => {
         case 'SET_LISTINGS': // On traite le cas 'PULL_TO_REFRESH' uniquement
             return {
                 ...state, // On recopie le state d'origine, on ne le modifie JAMAIS directement
-                categories: action.payload.categories,
-                experiences: action.payload.experiences.listings,
-                homes: action.payload.homes.listings,
-                popular: action.payload.popular.listings // On ajoute les valeurs à modifier et on retourne un NOUVEAU state
+                //categories: action.payload.categories,
+                experiences: action.payload.results,
+                //homes: action.payload.homes.listings,
+                //popular: action.payload.popular.listings
+                // On ajoute les valeurs à modifier et on retourne un NOUVEAU state
+            }
+        case 'SET_ASYNCSTORAGE':
+            return {
+                ...state,
+                asyncStorage: action.payload.userToken
             }
         default:
             return state // pour les cas restant on renvoie le state d'origine
